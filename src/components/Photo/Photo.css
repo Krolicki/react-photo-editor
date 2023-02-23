@@ -1,0 +1,11 @@
+.photo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-wraper img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
