@@ -1,0 +1,6 @@
+.editor-bar{
+    width:25%;
+    background-color: rgb(88, 88, 88);
+    margin-left: 0%;
+    transition: margin-left .3s;
+}
