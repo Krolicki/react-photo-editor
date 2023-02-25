@@ -4,3 +4,8 @@
     margin-left: 0%;
     transition: margin-left .3s;
 }
+
+.editor-item{
+    width: 100%;
+
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Photo.css'
 
-export const Photo = ({photo, setPhoto}) => {
+export const Photo = ({photo, setPhoto, values}) => {
     const [scale, setScale] = useState(1)
 
     const Resize = (type) => {
@@ -15,6 +15,12 @@ export const Photo = ({photo, setPhoto}) => {
         }
     }
 
+    const getStyles = () => {
+        const filters = Object.entries(values).forEach(entry =>{
+            const [key, value] = entry
+        })
+    }
+
     return(
         <div className='photo-container'>
             {photo ?
@@ -22,7 +28,7 @@ export const Photo = ({photo, setPhoto}) => {
                     <img 
                         src={photo} 
                         alt="your photo"
-                        style={{transform: `scale(${scale})`}}
+                        style={{transform: `scale(${scale})`, filter: getStyles()}}
                     />
                     <span className='size-buttons'>
                         <button type='button' onClick={()=>{Resize('up')}}>+</button>
