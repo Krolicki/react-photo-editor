@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Photo.css'
 
-export const Photo = ({photo, setPhoto, values}) => {
+export const Photo = ({photo, setPhoto, options}) => {
     const [scale, setScale] = useState(1)
 
     const Resize = (type) => {
@@ -16,9 +16,10 @@ export const Photo = ({photo, setPhoto, values}) => {
     }
 
     const getStyles = () => {
-        const filters = Object.entries(values).forEach(entry =>{
-            const [key, value] = entry
+        const filters = options.map(option => {
+            return `${option.prop}(${option.value}${option.unit})`
         })
+        return filters.join(' ')
     }
 
     return(

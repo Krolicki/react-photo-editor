@@ -1,32 +1,24 @@
 import './EditorBar.css'
 
-export const EditorBar = ({values, setValues}) => {
+export const EditorBar = ({options, setOptions}) => {
 
-    const options = [
-        {
-            name: 'Jasność',
-            prop: 'brightness',
-            min: 0,
-            max: 200,
-            unit: '%'
-        },
-        {
-            name: 'Kontrast',
-            prop: 'contrast',
-            min: 0,
-            max: 200,
-            unit: '%'
-        }
-    ]
+    
 
     const handleChange = ({target}) => {
         //const names = Object.keys(values)
-        setValues(prevValue => {
-            return({
-                ...prevValue,
-                [target.name] : target.value,
+        setOptions(prevValue => {
+            return prevValue.map(option =>{
+                if(option.prop !== target.name){
+                    return option
+                }
+                return({
+                    ...option,
+                    value : target.value
+                })
             })
+            
         })
+        console.log(options)
     }
 
     return(
@@ -40,7 +32,7 @@ export const EditorBar = ({values, setValues}) => {
                             name={option.prop} 
                             min={option.min}
                             max={option.max} 
-                            value={values[option.prop]} 
+                            value={option.value} 
                             onChange={handleChange}
                         />
                     </span>
