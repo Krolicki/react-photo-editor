@@ -5,7 +5,6 @@ export const EditorBar = ({options, setOptions}) => {
     
 
     const handleChange = ({target}) => {
-        //const names = Object.keys(values)
         setOptions(prevValue => {
             return prevValue.map(option =>{
                 if(option.prop !== target.name){
@@ -18,7 +17,6 @@ export const EditorBar = ({options, setOptions}) => {
             })
             
         })
-        console.log(options)
     }
 
     return(
