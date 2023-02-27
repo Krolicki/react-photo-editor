@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import {EditorBar, Photo} from './components'
+import {EditorBar, MainScreen, Photo} from './components'
 
 function App() {
   const [photo, setPhoto] = useState(null)
@@ -75,6 +75,7 @@ function App() {
 
   return (
     <div className="App">
+      {photo ? 
         <div className='editor'>
           <EditorBar 
             options = {options} 
@@ -85,7 +86,10 @@ function App() {
             setPhoto = {setPhoto}
             options = {options}
           />
-      </div>
+        </div>
+      :
+        <MainScreen />
+      }
     </div>
   )
 }

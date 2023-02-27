@@ -1,0 +1,36 @@
+.main-screen{
+
+}
+
+.main-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    font-size: 1.3rem;
+    background-color: blanchedalmond;
+}
+
+.main-head h1{
+    font-size: 5vw;
+    margin-bottom: 1vw;
+}
+
+.main-photos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 300px;
+    grid-gap: 10px;
+    max-width: 99vw;
+
+
+   
+}
+.main-photos img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
