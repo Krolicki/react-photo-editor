@@ -6,6 +6,7 @@
     height: 100%;
     background-color: rgb(231, 231, 231);
     position: relative;
+    background-color: blanchedalmond;
 }
 .photo-wraper{
     width: 100%;
@@ -21,8 +22,8 @@
 }
 
 .size-buttons{
-    width: 11vw;
-    height: 5vw;
+    width: 7vw;
+    height: 3vw;
     position: absolute;
     bottom: 1vw;
     right: 1vw;
@@ -37,7 +38,7 @@
     padding: 0;
     font-size: 2rem;
     background-color: rgba(255, 255, 255, 0.544);
-    border: 1px solid black;
+    border: 3px dotted black;
     border-radius: .5rem;
     cursor: pointer;
 }
@@ -61,7 +62,7 @@
     padding: .8rem;
     font-size: 1.2rem;
     background-color: rgba(255, 255, 255, 0.544);
-    border: 1px solid black;
+    border: 3px dotted black;
     border-radius: .5rem;
     cursor: pointer;
 }

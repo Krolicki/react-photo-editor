@@ -4,6 +4,7 @@ import {EditorBar, MainScreen, Photo} from './components'
 
 function App() {
   const [photo, setPhoto] = useState(null)
+  const [goToEditor, setGoToEditor] = useState(false)
 
   const [options, setOptions] = useState([
     {
@@ -75,7 +76,7 @@ function App() {
 
   return (
     <div className="App">
-      {photo ? 
+      {goToEditor ? 
         <div className='editor'>
           <EditorBar 
             options = {options} 
@@ -88,7 +89,10 @@ function App() {
           />
         </div>
       :
-        <MainScreen />
+        <MainScreen 
+          setGoToEditor={setGoToEditor}
+          setPhoto = {setPhoto}
+        />
       }
     </div>
   )

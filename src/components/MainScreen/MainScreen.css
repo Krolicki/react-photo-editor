@@ -18,6 +18,21 @@
     margin-bottom: 1vw;
 }
 
+.main-head p{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.main-head button{
+    font-size: 1.3rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    background-color: rgb(249, 190, 102);
+    border: 4px dotted black;
+}
+.main-head button:hover{
+    scale: 1.05;
+}
 .main-photos{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
