@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import './MainScreen.css'
+import {MainImage} from './MainImage'
 
 export const MainScreen = () => {
     const [photosList, setPhotosList] = useState([])
@@ -15,17 +16,34 @@ export const MainScreen = () => {
         setPhotosList(prevList => {
             return[
                 ...prevList,
-                <img alt='unsplash' src="https://source.unsplash.com/random/300x300" />,
-                <img alt='unsplash' src="https://source.unsplash.com/random/400x300" />,
-                <img alt='unsplash' src="https://source.unsplash.com/random/200x300" />,
-                <img alt='unsplash' src="https://source.unsplash.com/random/600x300" />,
-                <img alt='unsplash' src="https://source.unsplash.com/random/500x300" />
+               <MainImage />,
+               <MainImage />,
+               <MainImage />,
+               <MainImage />,
+               <MainImage />,
+               <MainImage />,
+               <MainImage />,
+               <MainImage />,
+               <MainImage />
             ]
         })
     }
     useEffect(()=>{
         addPhotos()
     },[])
+
+    const observer = useRef()
+    const lastPhotoRef = useCallback(element => {
+        if(observer.current)
+            observer.current.disconnect()
+        observer.current = new IntersectionObserver(entries => {
+            if(entries[0].isIntersecting){
+                addPhotos()
+            }
+        })
+        if(element) observer.current.observe(element)
+    },[])
+
     return(
         <div className='main-screen'>
             <div className='main-head'>
@@ -34,7 +52,10 @@ export const MainScreen = () => {
             </div>
             <div className='main-photos'>
                 {photosList.map((imgEl, index)=>{
-                    return <>{imgEl}</>
+                    if(photosList.length === index + 1)
+                        return <span ref={lastPhotoRef} key={index}>{imgEl}</span>
+                    else
+                        return <span key={index}>{imgEl}</span>
                 })}
             </div>
         </div>

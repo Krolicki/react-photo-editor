@@ -1,5 +1,5 @@
 .main-screen{
-
+    background-color: blanchedalmond;
 }
 
 .main-head{
@@ -7,9 +7,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
     height: 50vh;
     font-size: 1.3rem;
-    background-color: blanchedalmond;
+    
 }
 
 .main-head h1{
@@ -19,18 +20,39 @@
 
 .main-photos{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-rows: 300px;
+    justify-content: center;
+    align-items: center;
     grid-gap: 10px;
-    max-width: 99vw;
+    max-width: 100%;
+    padding: 10px;
 
 
    
+}
+.main-photos span{
+    width: 100%;
+    height: 100%;
 }
 .main-photos img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-
+    opacity: 0;
 }
 
+.appear{
+    animation-name: appear-animation;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear-animation {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
