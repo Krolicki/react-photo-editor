@@ -2,8 +2,6 @@ import './EditorBar.css'
 
 export const EditorBar = ({options, setOptions}) => {
 
-    
-
     const handleChange = ({target}) => {
         setOptions(prevValue => {
             return prevValue.map(option =>{

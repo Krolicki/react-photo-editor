@@ -22,8 +22,8 @@
 }
 
 .size-buttons{
-    width: 7vw;
-    height: 3vw;
+    width: 7rem;
+    height: 3rem;
     position: absolute;
     bottom: 1vw;
     right: 1vw;
@@ -51,14 +51,16 @@
     background-color: rgb(192, 192, 192);
 }
 
-.save-button{
+.option-buttons{
     position: absolute;
+    display: flex;
+    gap: 1vw;
     width: 10vw;
     bottom: 1vw;
     left: 1vw;
 }
 
-.save-button button{
+.option-buttons button{
     padding: .8rem;
     font-size: 1.2rem;
     background-color: rgba(255, 255, 255, 0.544);

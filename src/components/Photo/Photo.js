@@ -27,6 +27,7 @@ export const Photo = ({photo, setPhoto, options}) => {
         
         var img = new Image();
         img.src = imageUrl;
+        img.crossOrigin="anonymous"
         
         img.onload = function() {
           canvas.width = img.width;
@@ -64,8 +65,9 @@ export const Photo = ({photo, setPhoto, options}) => {
                         <button type='button' onClick={()=>{Resize('up')}}>+</button>
                         <button type='button' onClick={()=>{Resize('down')}}>-</button>
                     </span>
-                    <span className='save-button'>
+                    <span className='option-buttons'>
                         <button type='button' onClick={()=>{createFilteredCanvas(photo, getStyles())}}>Zapisz</button>
+                        <button type='button' onClick={()=>setPhoto(null)}>Usuń</button>
                     </span>
                 </div>
             :
