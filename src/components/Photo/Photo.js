@@ -76,7 +76,7 @@ export const Photo = ({photo, setPhoto, options}) => {
                     accept="image/*"
                     name="newImage"
                     onChange={(event) => {
-                        console.log(typeof event.target.files[0]);
+                        console.log(URL.createObjectURL(event.target.files[0]));
                         setPhoto(URL.createObjectURL(event.target.files[0]));
                 }}
             />

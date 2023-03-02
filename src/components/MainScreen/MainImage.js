@@ -7,13 +7,25 @@ export const MainImage = ({setChoosenPhoto}) => {
     function handleImageLoad() {
         setImageLoaded(true)
     }
+    function handleClick(img){
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d')
+        canvas.width = size.current
+        canvas.height = 300
+        ctx.drawImage(img, 0, 0)
+        canvas.toBlob(function(blob) {
+            console.log(URL.createObjectURL(blob))
+            setChoosenPhoto(URL.createObjectURL(blob))
+        })
+    }
 
     return (
         <img
             className={imageLoaded ? "appear" : ""}
+            crossOrigin="anonymous"
             src={`https://source.unsplash.com/random/${size.current}x300`}
             alt='unsplash'
-            onClick={(e)=>setChoosenPhoto(e.target.src)}
+            onClick={(e)=>handleClick(e.target)}
             onLoad={handleImageLoad}
         />
     )
