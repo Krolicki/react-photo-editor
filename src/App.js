@@ -81,6 +81,7 @@ function App() {
           <EditorBar 
             options = {options} 
             setOptions = {setOptions}
+            photoSelected = {photo ? true : false}
           />
           <Photo 
             photo = {photo}

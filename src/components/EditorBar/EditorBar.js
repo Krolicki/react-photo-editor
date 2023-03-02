@@ -1,6 +1,6 @@
 import './EditorBar.css'
 
-export const EditorBar = ({options, setOptions}) => {
+export const EditorBar = ({options, setOptions, photoSelected}) => {
 
     const handleChange = ({target}) => {
         setOptions(prevValue => {
@@ -18,7 +18,7 @@ export const EditorBar = ({options, setOptions}) => {
     }
 
     return(
-        <div className='editor-bar'>
+        <div className={`editor-bar ${photoSelected ? 'show-editor-bar' : ""}`}>
             {options.map((option, index)=>{
                 return(
                     <span className='editor-item' key={index}>

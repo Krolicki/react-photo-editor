@@ -14,7 +14,6 @@ export const MainImage = ({setChoosenPhoto}) => {
         canvas.height = 300
         ctx.drawImage(img, 0, 0)
         canvas.toBlob(function(blob) {
-            console.log(URL.createObjectURL(blob))
             setChoosenPhoto(URL.createObjectURL(blob))
         })
     }

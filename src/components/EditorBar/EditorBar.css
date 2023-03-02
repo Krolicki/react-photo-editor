@@ -1,8 +1,17 @@
 .editor-bar{
+    display: flex;
+    flex-direction: column;
     width:25%;
     background-color: rgb(88, 88, 88);
     margin-left: 0%;
     transition: margin-left .3s;
+    height: 100vh;
+    overflow-y: auto;
+    margin-left: -25%;
+}
+
+.show-editor-bar{
+    margin-left: 0;
 }
 
 .editor-item{
