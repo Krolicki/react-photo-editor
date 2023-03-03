@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Photo.css'
 
-export const Photo = ({photo, setPhoto, options}) => {
+export const Photo = ({photo, setPhoto, options, setGoToEditor}) => {
     const [scale, setScale] = useState(1)
 
     const Resize = (type) => {
@@ -68,17 +68,25 @@ export const Photo = ({photo, setPhoto, options}) => {
                     <span className='option-buttons'>
                         <button type='button' onClick={()=>{createFilteredCanvas(photo, getStyles())}}>Zapisz</button>
                         <button type='button' onClick={()=>setPhoto(null)}>Usuń</button>
+                        <button type='button' onClick={()=>setGoToEditor(false)}>Wróć</button>
                     </span>
                 </div>
             :
-                <input
-                    type="file"
-                    accept="image/*"
-                    name="newImage"
-                    onChange={(event) => {
-                        setPhoto(URL.createObjectURL(event.target.files[0]));
-                }}
-            />
+                <div className='file-input'>
+                    <label for="newImageInput" className='file-input-label'>
+                        Prześlij plik
+                    </label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        name="newImage"
+                        id="newImageInput"
+                        onChange={(event) => {
+                            setPhoto(URL.createObjectURL(event.target.files[0]));
+                        }}
+                    />
+                    <button type='button' onClick={()=>setGoToEditor(false)}>Wróć do ekranu głównego</button>
+                </div>
             }
         </div>
     )

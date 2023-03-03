@@ -87,6 +87,7 @@ function App() {
             photo = {photo}
             setPhoto = {setPhoto}
             options = {options}
+            setGoToEditor={setGoToEditor}
           />
         </div>
       :

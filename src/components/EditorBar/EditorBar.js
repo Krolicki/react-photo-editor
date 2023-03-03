@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import './EditorBar.css'
 
 export const EditorBar = ({options, setOptions, photoSelected}) => {
+    const [hideEditorBar, setHideEditorBar] = useState(false)
 
     const handleChange = ({target}) => {
         setOptions(prevValue => {
@@ -18,7 +20,12 @@ export const EditorBar = ({options, setOptions, photoSelected}) => {
     }
 
     return(
-        <div className={`editor-bar ${photoSelected ? 'show-editor-bar' : ""}`}>
+        <div className={`editor-bar ${photoSelected && !hideEditorBar ? 'show-editor-bar' : ""}`}>
+            {hideEditorBar ?
+                <span className='show-arrow' title='Pokaż pasek' onClick={()=>setHideEditorBar(false)}></span>
+            :
+                <span className='hide-arrow' title='Schowaj pasek' onClick={()=>setHideEditorBar(true)}></span>
+            }
             {options.map((option, index)=>{
                 return(
                     <span className='editor-item' key={index}>
