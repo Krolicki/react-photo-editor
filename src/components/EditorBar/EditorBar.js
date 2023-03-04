@@ -21,7 +21,7 @@ export const EditorBar = ({options, setOptions, photoSelected}) => {
 
     return(
         <div className={`editor-bar ${photoSelected && !hideEditorBar ? 'show-editor-bar' : ""}`}>
-            {hideEditorBar ?
+            {photoSelected && hideEditorBar ?
                 <span className='show-arrow' title='Pokaż pasek' onClick={()=>setHideEditorBar(false)}></span>
             :
                 <span className='hide-arrow' title='Schowaj pasek' onClick={()=>setHideEditorBar(true)}></span>

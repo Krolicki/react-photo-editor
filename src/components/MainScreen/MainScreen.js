@@ -9,7 +9,6 @@ export const MainScreen = ({setGoToEditor, setPhoto}) => {
     useEffect(()=>{
         if(choosenPhoto){
             setPhoto(choosenPhoto)
-            //onsole.log(choosenPhoto)
             setGoToEditor(true)
         }
     },[choosenPhoto])

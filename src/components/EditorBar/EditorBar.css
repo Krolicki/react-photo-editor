@@ -9,7 +9,7 @@
     overflow-y: auto;
     margin-left: -25%;
     position: relative;
-    padding-top: 1.5rem;
+    padding-top: 2rem;
     z-index: 2 !important;
 }
 
@@ -20,31 +20,30 @@
 .hide-arrow, .show-arrow{
     width: 0; 
     height: 0; 
-    border-top: .5rem solid transparent;
-    border-bottom: .5rem solid transparent;
-
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
     position: absolute;
     top: 1rem;
-    
     cursor: pointer;
 }
 .hide-arrow{
     right: 1rem;
     border-left: 0 solid transparent;
-    border-right: 1rem solid white; 
+    border-right: 1.5rem solid white; 
 }
 .show-arrow{
-    z-index: 0 !important;
-    left: 1rem;
+    left: -1.5rem;
     position: fixed;
-    border-left: 1rem solid black;
-    border-right: 0 solid transparent; 
+    border-left: 1.5rem solid black;
+    border-right: 0 solid transparent;
+    transition: transform .5s;
+    transform: translateX(100%);
 }
 .hide-arrow:hover{
-    border-right: 1rem solid #0075FF;
+    border-right: 1.5rem solid #0075FF;
 }
 .show-arrow:hover{
-    border-left: 1rem solid #0075FF;
+    border-left: 1.5rem solid #0075FF;
 }
 .editor-item{
     display: flex;
