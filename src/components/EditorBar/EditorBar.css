@@ -57,3 +57,19 @@
     margin-top: 5px;
     width: 100%;
 }
+.editor-button{
+    width: 80%;
+    padding: 5% 10%;
+    margin: 15px auto;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.editor-button:hover{
+    background-color: #4a9eff;
+}
+.editor-button:active{
+    background-color: #0075FF;
+}

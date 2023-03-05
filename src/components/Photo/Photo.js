@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Photo.css'
 
-export const Photo = ({photo, setPhoto, options, setGoToEditor}) => {
+export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions}) => {
     const [scale, setScale] = useState(1)
 
     const Resize = (type) => {
@@ -67,7 +67,7 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor}) => {
                     </span>
                     <span className='option-buttons'>
                         <button type='button' onClick={()=>{createFilteredCanvas(photo, getStyles())}}>Zapisz</button>
-                        <button type='button' onClick={()=>setPhoto(null)}>Usuń</button>
+                        <button type='button' onClick={()=>{setPhoto(null); resetOptions();}}>Usuń</button>
                         <button type='button' onClick={()=>setGoToEditor(false)}>Wróć</button>
                     </span>
                 </div>

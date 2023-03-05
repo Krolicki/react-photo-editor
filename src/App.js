@@ -13,6 +13,7 @@ function App() {
         min: 0,
         max: 200,
         value: 100,
+        default: 100,
         unit: '%'
     },
     {
@@ -21,6 +22,7 @@ function App() {
         min: 0,
         max: 200,
         value: 100,
+        default: 100,
         unit: '%'
     },
     {
@@ -29,6 +31,7 @@ function App() {
         min: 0,
         max: 100,
         value: 0,
+        default: 0,
         unit: '%'
     },
     {
@@ -37,6 +40,7 @@ function App() {
         min: 0,
         max: 360,
         value: 0,
+        default: 0,
         unit: 'deg'
     },
     {
@@ -45,6 +49,7 @@ function App() {
         min: 0,
         max: 100,
         value: 0,
+        default: 0,
         unit: '%'
     },
     {
@@ -53,6 +58,7 @@ function App() {
         min: 0,
         max: 100,
         value: 100,
+        default: 100,
         unit: '%'
     },
     {
@@ -61,6 +67,7 @@ function App() {
         min: 0,
         max: 100,
         value: 0,
+        default: 0,
         unit: '%'
     },
     {
@@ -69,10 +76,21 @@ function App() {
         min: 0,
         max: 20,
         value: 0,
+        default: 0,
         unit: 'px'
     }
   ])
 
+  const resetOptions = () => {
+    setOptions(prevValue => {
+        return prevValue.map(option =>{
+            return({
+                ...option,
+                value: option.default
+            })
+        })
+    })
+  }
 
   return (
     <div className="App">
@@ -82,12 +100,14 @@ function App() {
             options = {options} 
             setOptions = {setOptions}
             photoSelected = {photo ? true : false}
+            resetOptions = {resetOptions}
           />
           <Photo 
             photo = {photo}
             setPhoto = {setPhoto}
             options = {options}
             setGoToEditor={setGoToEditor}
+            resetOptions = {resetOptions}
           />
         </div>
       :

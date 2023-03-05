@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './EditorBar.css'
 
-export const EditorBar = ({options, setOptions, photoSelected}) => {
+export const EditorBar = ({options, setOptions, photoSelected, resetOptions}) => {
     const [hideEditorBar, setHideEditorBar] = useState(false)
 
     const handleChange = ({target}) => {
@@ -41,8 +41,8 @@ export const EditorBar = ({options, setOptions, photoSelected}) => {
                     </span>
                 )
             }) 
-
             }
+            <button type='button' className='editor-button' onClick={()=>resetOptions()}>Resetuj</button>
 
         </div>
     )
