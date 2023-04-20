@@ -22,7 +22,7 @@ export const MainImage = ({setChoosenPhoto}) => {
         <img
             className={imageLoaded ? "appear" : ""}
             crossOrigin="anonymous"
-            src={`https://source.unsplash.com/random/${size.current}x300`}
+            src={`https://source.unsplash.com/${size.current}x300/?random`}
             alt='unsplash'
             onClick={(e)=>handleClick(e.target)}
             onLoad={handleImageLoad}
