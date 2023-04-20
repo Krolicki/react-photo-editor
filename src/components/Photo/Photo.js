@@ -58,7 +58,7 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions}) =
                 <div className='photo-wraper'>
                     <img 
                         src={photo} 
-                        alt="your photo"
+                        alt=""
                         style={{transform: `scale(${scale})`, filter: getStyles()}}
                     />
                     <span className='size-buttons'>

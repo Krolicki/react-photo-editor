@@ -2,11 +2,22 @@ import { useState } from 'react'
 import './App.css'
 import {EditorBar, MainScreen, Photo} from './components'
 
+
+export type Option = {
+  name: string
+  prop: string
+  min: number
+  max: number
+  value: number
+  default: number
+  unit: string
+}
+
 function App() {
-  const [photo, setPhoto] = useState(null)
+  const [photo, setPhoto] = useState<string | null>(null)
   const [goToEditor, setGoToEditor] = useState(false)
 
-  const [options, setOptions] = useState([
+  const [options, setOptions] = useState<Option[]>([
     {
         name: 'Jasność',
         prop: 'brightness',

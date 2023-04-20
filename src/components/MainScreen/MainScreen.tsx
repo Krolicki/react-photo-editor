@@ -2,16 +2,21 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './MainScreen.css'
 import {MainImage} from './MainImage'
 
-export const MainScreen = ({setGoToEditor, setPhoto}) => {
-    const [photosList, setPhotosList] = useState([])
-    const [choosenPhoto, setChoosenPhoto] = useState(null)
+type MainScreenProps = {
+    setGoToEditor: React.Dispatch<React.SetStateAction<boolean>>
+    setPhoto: React.Dispatch<React.SetStateAction<string | null>>
+}
+ 
+export const MainScreen = ({setGoToEditor, setPhoto} : MainScreenProps) => {
+    const [photosList, setPhotosList] = useState<React.ReactNode[]>([])
+    const [choosenPhoto, setChoosenPhoto] = useState<string | null>(null)
 
     useEffect(()=>{
         if(choosenPhoto){
             setPhoto(choosenPhoto)
             setGoToEditor(true)
         }
-    },[choosenPhoto])
+    },[choosenPhoto, setPhoto, setGoToEditor])
 
     const addPhotos = () => {
         setPhotosList(prevList => {
@@ -29,8 +34,8 @@ export const MainScreen = ({setGoToEditor, setPhoto}) => {
         addPhotos()
     },[])
 
-    const observer = useRef()
-    const lastPhotoRef = useCallback(element => {
+    const observer = useRef<IntersectionObserver>()
+    const lastPhotoRef = useCallback<React.RefCallback<HTMLElement>>(element => {
         if(observer.current)
             observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
