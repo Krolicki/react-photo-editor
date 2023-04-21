@@ -1,19 +1,27 @@
 import { useState } from 'react'
 import './EditorBar.css'
+import { Option } from '../../App'
 
-export const EditorBar = ({options, setOptions, photoSelected, resetOptions}) => {
+type EditorBarProps = {
+    options: Option[]
+    setOptions: React.Dispatch<React.SetStateAction<Option[]>>
+    photoSelected: boolean
+    resetOptions: () => void
+}
+
+export const EditorBar = ({options, setOptions, photoSelected, resetOptions} : EditorBarProps) => {
     const [hideEditorBar, setHideEditorBar] = useState(false)
 
-    const handleChange = ({target}) => {
+    const handleChange = ({target} : React.ChangeEvent<HTMLInputElement>) => {
         setOptions(prevValue => {
             return prevValue.map(option =>{
                 if(option.prop !== target.name){
                     return option
                 }
-                return({
+                return{
                     ...option,
-                    value : target.value
-                })
+                    value : parseInt(target.value, 10)
+                } as Option
             })
             
         })
