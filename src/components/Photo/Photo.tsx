@@ -1,10 +1,19 @@
 import { useState } from 'react'
 import './Photo.css'
+import { Option } from '../../App'
 
-export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions}) => {
+type PhotoProps = {
+    photo: string | null
+    setPhoto: React.Dispatch<React.SetStateAction<string | null>>
+    options: Option[]
+    setGoToEditor: React.Dispatch<React.SetStateAction<boolean>>
+    resetOptions: () => void
+}
+
+export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions} : PhotoProps) => {
     const [scale, setScale] = useState(1)
 
-    const Resize = (type) => {
+    const Resize = (type : string) => {
         if(type === 'up'){
             if(scale < 1.5)
                 setScale(scale + 0.1)
@@ -21,9 +30,9 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions}) =
         })
         return filters.join(' ')
     }
-    function createFilteredCanvas(imageUrl, filters) {
+    function createFilteredCanvas(imageUrl : string, filters : string) {
         var canvas = document.createElement('canvas');
-        var ctx = canvas.getContext('2d');
+        var ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
         
         var img = new Image();
         img.src = imageUrl;
@@ -39,7 +48,7 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions}) =
           
           
           canvas.toBlob(function(blob) {
-            var url = URL.createObjectURL(blob);
+            var url = URL.createObjectURL(blob as Blob);
       
             var link = document.createElement('a');
             link.href = url;
@@ -73,7 +82,7 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions}) =
                 </div>
             :
                 <div className='file-input'>
-                    <label for="newImageInput" className='file-input-label'>
+                    <label htmlFor="newImageInput" className='file-input-label'>
                         Prześlij plik
                     </label>
                     <input
@@ -81,8 +90,10 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions}) =
                         accept="image/*"
                         name="newImage"
                         id="newImageInput"
-                        onChange={(event) => {
-                            setPhoto(URL.createObjectURL(event.target.files[0]));
+                        onChange={(event : React.ChangeEvent<HTMLInputElement>) => {
+                            if (event.target.files && event.target.files.length > 0) {
+                                setPhoto(URL.createObjectURL(event.target.files[0]));
+                            }
                         }}
                     />
                     <button type='button' onClick={()=>setGoToEditor(false)}>Wróć do ekranu głównego</button>
