@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-photo-editor/static/css/main.988e9dca.css",
+    "main.js": "/react-photo-editor/static/js/main.6179c00b.js",
+    "index.html": "/react-photo-editor/index.html",
+    "main.988e9dca.css.map": "/react-photo-editor/static/css/main.988e9dca.css.map",
+    "main.6179c00b.js.map": "/react-photo-editor/static/js/main.6179c00b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.988e9dca.css",
+    "static/js/main.6179c00b.js"
+  ]
+}
