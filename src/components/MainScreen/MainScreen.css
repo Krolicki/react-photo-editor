@@ -10,6 +10,7 @@
     text-align: center;
     height: 50vh;
     font-size: 1.3rem;
+    padding-inline: 2vw;
 }
 
 .main-head h1{
@@ -68,5 +69,19 @@
     }
     to{
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 920px){
+    .main-head h1{
+        font-size: 12vw;
+        margin-bottom: 5vw;
+    }
+    .main-head p{
+        flex-direction: column;
+        font-size: 5vw;
+    }
+    .main-head button{
+        font-size: 7vw;
     }
 }
