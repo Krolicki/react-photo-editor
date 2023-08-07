@@ -30,11 +30,12 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions} : 
         })
         return filters.join(' ')
     }
+
     function createFilteredCanvas(imageUrl : string, filters : string) {
-        var canvas = document.createElement('canvas');
-        var ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
         
-        var img = new Image();
+        const img = new Image();
         img.src = imageUrl;
         img.crossOrigin="anonymous"
         
@@ -48,11 +49,14 @@ export const Photo = ({photo, setPhoto, options, setGoToEditor, resetOptions} : 
           
           
           canvas.toBlob(function(blob) {
-            var url = URL.createObjectURL(blob as Blob);
+            const url = URL.createObjectURL(blob as Blob);
+
+            const date = new Date()
+            const formattedDate = date.toISOString().replace(/[:.]/g, '-').replace(/[T]/g, '_').substring(0, 19)
       
-            var link = document.createElement('a');
+            const link = document.createElement('a');
             link.href = url;
-            link.download = 'react-photo-editor.png';
+            link.download = `React-Photo-Editor-${formattedDate}.png`;
       
             link.click();
       
