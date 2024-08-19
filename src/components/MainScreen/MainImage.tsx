@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 
 type MainImageProps = {
-    setChoosenPhoto: React.Dispatch<React.SetStateAction<string | null>>
+    setChoosenPhoto: React.Dispatch<React.SetStateAction<string | null>>,
+    photosCount: number
 }
 
-export const MainImage = ({setChoosenPhoto} : MainImageProps) => {
+export const MainImage = ({setChoosenPhoto, photosCount} : MainImageProps) => {
     const [imageLoaded, setImageLoaded] = useState(false)
-    const size = useRef(Math.floor(Math.random() * 10 + 600))
 
     function handleImageLoad() {
         setImageLoaded(true)
@@ -14,7 +14,7 @@ export const MainImage = ({setChoosenPhoto} : MainImageProps) => {
     function handleClick({target} : React.MouseEvent<HTMLImageElement>){
         const canvas = document.createElement('canvas')
         const ctx = canvas.getContext('2d')
-        canvas.width = size.current
+        canvas.width = 600
         canvas.height = 600
         ctx?.drawImage(target as CanvasImageSource, 0, 0)
         canvas.toBlob(function(blob) {
@@ -27,8 +27,7 @@ export const MainImage = ({setChoosenPhoto} : MainImageProps) => {
         <img
             className={imageLoaded ? "appear" : ""}
             crossOrigin="anonymous"
-            //src={`https://source.unsplash.com/${size.current}x300/?random`}
-            src={`https://picsum.photos/${size.current}/600`}
+            src={`https://picsum.photos/600/600?random=${photosCount}`}
             alt="random image from picsum"
             onClick={(e)=>handleClick(e)}
             onLoad={handleImageLoad}

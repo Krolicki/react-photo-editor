@@ -10,6 +10,7 @@ type MainScreenProps = {
 export const MainScreen = ({setGoToEditor, setPhoto} : MainScreenProps) => {
     const [photosList, setPhotosList] = useState<React.ReactNode[]>([])
     const [choosenPhoto, setChoosenPhoto] = useState<string | null>(null)
+    const [photosCount, setPhotosCount] = useState<number>(0)
 
     useEffect(()=>{
         if(choosenPhoto){
@@ -18,20 +19,20 @@ export const MainScreen = ({setGoToEditor, setPhoto} : MainScreenProps) => {
         }
     },[choosenPhoto, setPhoto, setGoToEditor])
 
-    const addPhotos = () => {
+    const addPhotos = (currentCount: number) => {
         setPhotosList(prevList => {
             return[
                 ...prevList,
-               <MainImage setChoosenPhoto={setChoosenPhoto}/>,
-               <MainImage setChoosenPhoto={ setChoosenPhoto}/>,
-               <MainImage setChoosenPhoto={ setChoosenPhoto}/>,
-               <MainImage setChoosenPhoto={ setChoosenPhoto}/>,
-               <MainImage setChoosenPhoto={setChoosenPhoto}/>
+               <MainImage setChoosenPhoto={setChoosenPhoto} photosCount={currentCount}/>,
+               <MainImage setChoosenPhoto={setChoosenPhoto} photosCount={currentCount+1}/>,
+               <MainImage setChoosenPhoto={setChoosenPhoto} photosCount={currentCount+2}/>,
+               <MainImage setChoosenPhoto={setChoosenPhoto} photosCount={currentCount+3}/>,
+               <MainImage setChoosenPhoto={setChoosenPhoto} photosCount={currentCount+4}/>
             ]
         })
     }
     useEffect(()=>{
-        addPhotos()
+        addPhotos(photosCount)
     },[])
 
     const observer = useRef<IntersectionObserver>()
@@ -39,9 +40,13 @@ export const MainScreen = ({setGoToEditor, setPhoto} : MainScreenProps) => {
         if(observer.current)
             observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
-            if(entries[0].isIntersecting){
-                addPhotos()
-            }
+            if (entries[0].isIntersecting) {
+                setPhotosCount(currentCount => {
+                    const newCount = currentCount + 5
+                    addPhotos(newCount)
+                    return newCount
+                })
+            } 
         })
         if(element) observer.current.observe(element)
     },[])
@@ -54,6 +59,7 @@ export const MainScreen = ({setGoToEditor, setPhoto} : MainScreenProps) => {
             </div>
             <div className='main-photos'>
                 {photosList.map((imgEl, index)=>{
+                    //console.log(photosCount)
                     if(photosList.length === index + 1)
                         return <span ref={lastPhotoRef} key={index}>{imgEl}</span>
                     else
